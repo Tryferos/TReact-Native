@@ -5,7 +5,7 @@ This is a new **React Native** Template
 Create a react-native app
 
 ```bash
-  npx react-native init YourApplicationName
+npx react-native init YourApplicationName
 ```
 
 Pull the code and replace old files with the new files (only files with the same file_name.extension)
@@ -14,14 +14,7 @@ Pull the code and replace old files with the new files (only files with the same
 git pull https://github.com/Tryferos/TReact-Native
 ```
 
-Open app.json and replace the values (YourApplicationName)
-
-```javascript
-{
-  "name": "YourApplicationName",
-  "displayName": "YourApplicationName"
-}
-```
+Make sure any merge conflicts are resolved.
 
 ## Install the depedencies
 
