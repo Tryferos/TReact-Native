@@ -3,7 +3,7 @@ import {Button, Text, View} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {ScreenWrapper} from '../components/wrappers/screen';
-import {useBearStore} from '../store/test';
+import {useBearStore} from '../store/bears';
 
 export const HomeScreen: FC = () => {
   const {bears, increasePopulation} = useBearStore(state => state);

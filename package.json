@@ -1,10 +1,11 @@
 {
-  "name": "NutritionApp",
+  "name": "TReactNative",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android --port=8082",
     "ios": "react-native run-ios --port=8082",
+    "init": "npm i && cd ios && pod install && cd ..",
     "lint": "eslint .",
     "start": "react-native start --port=8082",
     "test": "jest"
@@ -22,8 +23,6 @@
     "react-native-safe-area-context": "^4.10.3",
     "react-native-screens": "^3.31.1",
     "react-native-svg": "^15.3.0",
-    "react-native-svg-transformer": "^1.4.0",
-    "react-native-vector-icons": "^10.1.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
