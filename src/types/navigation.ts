@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {NavigationParamList} from '../constants.ts/navigation';
+import {NavigationParamList} from '../constants/navigation';
 
 export const useAppNavigation = () => {
   return useNavigation<

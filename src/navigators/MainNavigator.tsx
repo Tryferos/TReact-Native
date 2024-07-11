@@ -5,7 +5,7 @@ import {
 import {FC} from 'react';
 import {HomeScreen} from '../screens/HomeScreen';
 import React from 'react';
-import {MainNavigatorScreenNames} from '../constants.ts/navigation';
+import {MainNavigatorScreenNames, screenOptions} from '../constants/navigation';
 
 const Stack = createStackNavigator();
 
@@ -13,10 +13,7 @@ const MainNavigator: FC = () => {
   return (
     <Stack.Navigator
       initialRouteName={MainNavigatorScreenNames.Main_Home}
-      screenOptions={{
-        headerShown: false,
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      screenOptions={screenOptions}>
       <Stack.Screen
         options={{title: 'My home'}}
         name={MainNavigatorScreenNames.Main_Home}

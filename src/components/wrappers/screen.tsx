@@ -6,6 +6,7 @@ import {SvgUri, SvgXml} from 'react-native-svg';
 import ArrowBack from '../../../icons/arrow_back.svg';
 import {SVGImage} from '../elements/Image';
 import {Row} from '../elements/Row';
+import {Column} from '../elements/Column';
 
 type ScreenWrapperProps = {
   title: string;
@@ -19,8 +20,8 @@ export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
       <Header {...props} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        className="flex h-full w-full">
-        {children}
+        className="w-[100%] h-[100%] flex">
+        <Column className="pb-20">{children}</Column>
       </ScrollView>
     </View>
   );
