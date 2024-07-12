@@ -1,12 +1,16 @@
 import {EXTERNAL_API_URL} from '../constants/network';
 
 class Network {
+  private static _headers: HeadersInit_ = {
+    'Content-Type': 'application/json',
+  };
+
   static async get<T>(url: string, formatData?: (data: any) => T): Promise<T> {
     const response = await fetch(`${EXTERNAL_API_URL}${url}`, {
       //TODO REPLACE EXTERNAL API WITH INTERNAL API
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
+        ...this._headers,
       },
     });
     const data = await response.json();
@@ -21,7 +25,7 @@ class Network {
       //TODO REPLACE EXTERNAL API WITH INTERNAL API
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        ...this._headers,
       },
       body: JSON.stringify(body),
     });

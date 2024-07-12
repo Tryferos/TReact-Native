@@ -15,9 +15,7 @@ export const SVGImage: FC<SVGImageProps> = ({
   onPress,
   ...rest
 }) => {
-  const navigation = useAppNavigation();
-
-  return svg && navigation.canGoBack() ? (
+  return svg ? (
     <SvgXml
       onPress={onPress}
       xml={svg}

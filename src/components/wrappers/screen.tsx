@@ -1,8 +1,7 @@
 import React, {FC, PropsWithChildren} from 'react';
-import {ImageComponent, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useAppNavigation} from '../../types/navigation';
-import {SvgUri, SvgXml} from 'react-native-svg';
 import ArrowBack from '../../../icons/arrow_back.svg';
 import {SVGImage} from '../elements/Image';
 import {Row} from '../elements/Row';
@@ -37,7 +36,9 @@ const Header: FC<ScreenWrapperProps> = ({title, centerTitle}) => {
       className={`py-4 w-[100%] items-center ${
         centerTitle ? 'justify-between' : ''
       }`}>
-      <SVGImage svg={ArrowBack} onPress={handleBack} size={16} />
+      {navigator.canGoBack() && (
+        <SVGImage svg={ArrowBack} onPress={handleBack} size={16} />
+      )}
       <View>
         <Text className="font-semibold text-2xl text-black">{title}</Text>
       </View>
