@@ -22,6 +22,12 @@ Make sure any merge conflicts are resolved.
 npm run init
 ```
 
+## Finally follow these guides to setup your environment
+
+- [react-native-vector-icons setup](https://github.com/oblador/react-native-vector-icons/tree/master?tab=readme-ov-file)
+
+## Useful Resources
+
 - [React Native Website](https://reactnative.dev) - learn more about React Native.
 - [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.

@@ -1,11 +1,10 @@
 import React, {FC} from 'react';
 import ReactNativeModal from 'react-native-modal';
 import {Column} from '../elements/Column';
-import {Dimensions, Platform, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Platform, View} from 'react-native';
 import {Row} from '../elements/Row';
-import {SVGImage} from '../elements/Image';
-import CloseIcon from '../../../icons/close.svg';
-import {Divider} from '../../components/elements/Divider';
+import {CustomText} from '../elements/CustomText';
+import {CustomIcon} from '../elements/CustomIcon';
 
 type ModalProps = {
   children: React.ReactNode;
@@ -45,7 +44,6 @@ export const Modal: FC<ModalProps> = ({
         style={{flex: 1}}
         className="min-h-[120px] px-4 pb-6 pt-4 w-[100%]">
         {showCloseIcon && <ModalHeader title={title} onClose={onClose} />}
-        <Divider />
         {children}
       </Column>
     </ReactNativeModal>
@@ -57,10 +55,18 @@ const ModalHeader: FC<ModalHeaderProps & Pick<ModalProps, 'onClose'>> = ({
   onClose,
 }) => {
   return (
-    <Row className="items-center justify-between border-divider">
+    <Row className="items-center justify-between border-divider mb-5">
       <View />
-      <Text className="text-xl font-medium text-black">{title}</Text>
-      <SVGImage svg={CloseIcon} size={20} strokeWidth={10} onPress={onClose} />
+      <CustomText font="wotfardMedium" size={'lg'}>
+        {title}
+      </CustomText>
+      <CustomIcon
+        icon="close"
+        size="md"
+        color="black"
+        onPress={onClose}
+        style={{marginRight: 10}}
+      />
     </Row>
   );
 };

@@ -10,6 +10,7 @@ module.exports = {
     800: '#155e75',
     900: '#164e63',
   },
+  divider: '#999999',
   primary: '#10b985',
   text: '#022c1f',
   background: '#a7f3db',

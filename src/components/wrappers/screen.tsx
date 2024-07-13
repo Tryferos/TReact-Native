@@ -1,11 +1,11 @@
 import React, {FC, PropsWithChildren} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useAppNavigation} from '../../types/navigation';
-import ArrowBack from '../../../icons/arrow_back.svg';
-import {SVGImage} from '../elements/Image';
 import {Row} from '../elements/Row';
 import {Column} from '../elements/Column';
+import {CustomIcon} from '../elements/CustomIcon';
+import {CustomText} from '../elements/CustomText';
 
 type ScreenWrapperProps = {
   title: string;
@@ -16,7 +16,7 @@ export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
   const {children, centerTitle = false} = props;
   return (
     <View className="flex flex-col px-4">
-      <Header {...props} />
+      <Header {...props} centerTitle={centerTitle} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         className="w-[100%] h-[100%] flex">
@@ -37,10 +37,21 @@ const Header: FC<ScreenWrapperProps> = ({title, centerTitle}) => {
         centerTitle ? 'justify-between' : ''
       }`}>
       {navigator.canGoBack() && (
-        <SVGImage svg={ArrowBack} onPress={handleBack} size={16} />
+        <CustomIcon
+          icon={'arrow-back-ios'}
+          onPress={handleBack}
+          size={'sm'}
+          color="black"
+        />
       )}
       <View>
-        <Text className="font-semibold text-2xl text-black">{title}</Text>
+        <CustomText
+          font="wotfardMedium"
+          size={'2xl'}
+          style={{marginBottom: 100}}
+          className="">
+          {title}
+        </CustomText>
       </View>
       <View />
     </Row>
