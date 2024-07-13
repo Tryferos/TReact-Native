@@ -10,7 +10,7 @@ import {
 } from '../../constants/assets';
 import MaterialIconsTypes from 'react-native-vector-icons/glyphmaps/MaterialIcons.json';
 import FontAwesomeIconsTypes from 'react-native-vector-icons/glyphmaps/FontAwesome.json';
-import {AppIconsType} from '../../types/global';
+import {AppIconsType} from '../../types/icons';
 
 type CustomIconProps = {
   icon: AppIconsType;
