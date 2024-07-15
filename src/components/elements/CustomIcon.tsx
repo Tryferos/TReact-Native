@@ -7,7 +7,7 @@ import {
   AppIconSize,
   ColorsType,
   IconSizeType,
-} from '../../constants/assets';
+} from '../../constants/values';
 import MaterialIconsTypes from 'react-native-vector-icons/glyphmaps/MaterialIcons.json';
 import FontAwesomeIconsTypes from 'react-native-vector-icons/glyphmaps/FontAwesome.json';
 import {AppIconsType} from '../../types/icons';

@@ -15,7 +15,7 @@ type ScreenWrapperProps = {
 export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
   const {children, centerTitle = false} = props;
   return (
-    <View className="flex flex-col px-4">
+    <View className="flex flex-col px-4 pt-12">
       <Header {...props} centerTitle={centerTitle} />
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -33,7 +33,7 @@ const Header: FC<ScreenWrapperProps> = ({title, centerTitle}) => {
   };
   return (
     <Row
-      className={`py-4 w-[100%] items-center ${
+      className={`pb-4 w-[100%] items-center ${
         centerTitle ? 'justify-between' : ''
       }`}>
       {navigator.canGoBack() && (

@@ -10,12 +10,8 @@ type ModalProps = {
   children: React.ReactNode;
   isVisible: boolean;
   onClose: () => void;
+  backdrop?: boolean;
 } & ModalHeaderProps;
-
-type ModalHeaderProps = {
-  title: string;
-  showCloseIcon?: boolean;
-};
 
 export const Modal: FC<ModalProps> = ({
   children,
@@ -23,6 +19,7 @@ export const Modal: FC<ModalProps> = ({
   onClose,
   title,
   showCloseIcon = true,
+  backdrop,
 }) => {
   const deviceWidth = Dimensions.get('window').width;
   const deviceHeight =
@@ -38,6 +35,7 @@ export const Modal: FC<ModalProps> = ({
       deviceWidth={deviceWidth}
       isVisible={isVisible}
       className="bg-white absolute bottom-0 left-0 m-0 w-[100vw] rounded-t-3xl"
+      hasBackdrop={backdrop}
       onBackButtonPress={onClose}
       onBackdropPress={onClose}>
       <Column
@@ -48,6 +46,11 @@ export const Modal: FC<ModalProps> = ({
       </Column>
     </ReactNativeModal>
   );
+};
+
+type ModalHeaderProps = {
+  title: string;
+  showCloseIcon?: boolean;
 };
 
 const ModalHeader: FC<ModalHeaderProps & Pick<ModalProps, 'onClose'>> = ({
