@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
-import {StyleSheet} from 'react-native';
+import React, {FC} from 'react';
+import {StatusBar, StyleSheet} from 'react-native';
 import MainNavigator from './src/navigators/MainNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
@@ -10,6 +10,7 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaProvider style={[styles.container]}>
       <GestureHandlerRootView style={[styles.container]}>
+        <CustomStatusBar />
         <GlobalWrapper>
           <NavigationContainer>
             <MainNavigator />
@@ -19,6 +20,18 @@ function App(): React.JSX.Element {
     </SafeAreaProvider>
   );
 }
+
+const CustomStatusBar: FC = () => {
+  return (
+    <StatusBar
+      animated
+      backgroundColor="rgba(0,0,0,0)"
+      networkActivityIndicatorVisible={true}
+      translucent
+      barStyle="dark-content"
+    />
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
