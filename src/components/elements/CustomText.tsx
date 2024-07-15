@@ -1,20 +1,7 @@
-import {FC, ReactNode} from 'react';
-import React, {StyleProp, StyleSheet, Text, TextStyle} from 'react-native';
-import {
-  AppFontSize,
-  AppColors,
-  FontSizeType,
-  ColorsType,
-} from '../../constants/assets';
-
-type CustomTextProps = {
-  children: ReactNode;
-  style?: StyleProp<TextStyle>;
-  className?: string;
-  font?: keyof typeof styles;
-  size?: FontSizeType;
-  color?: ColorsType;
-};
+import {FC} from 'react';
+import React, {StyleSheet, Text} from 'react-native';
+import {AppFontSize, AppColors} from '../../constants/values';
+import {CustomTextProps} from '../../types/components';
 
 export const CustomText: FC<CustomTextProps> = ({
   children,
@@ -36,6 +23,8 @@ export const CustomText: FC<CustomTextProps> = ({
     </Text>
   );
 };
+
+export type FontStyles = keyof typeof styles;
 
 const styles = StyleSheet.create({
   wotfardRegular: {
