@@ -18,7 +18,7 @@ type CustomIconProps = {
   color?: ColorsType;
   size?: IconSizeType;
   onPress?: () => void;
-  style?: Omit<StyleProp<TextStyle>, 'width' | 'height'>;
+  style?: Omit<TextStyle, 'width' | 'height'>;
 };
 
 export const CustomIcon: FC<CustomIconProps> = ({
