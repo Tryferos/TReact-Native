@@ -2,6 +2,7 @@ const colors = Object.freeze({
   black: '#000000',
   white: '#FFFFFF',
   gray: '#555555',
+  main: '#2563eb',
   transparent: 'transparent',
 });
 
@@ -43,10 +44,24 @@ const gapSize = Object.freeze({
   '3xl': 48,
 });
 
+const boxSize = Object.freeze({
+  '3xs': 4,
+  '2xs': 8,
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 32,
+  '2xl': 48,
+  '3xl': 64,
+  '4xl': 96,
+});
+
 type Colors = keyof typeof colors;
 type FontSize = keyof typeof fontSize;
 type IconSize = keyof typeof iconSize;
 type GapSize = keyof typeof gapSize;
+type BoxSize = keyof typeof boxSize;
 
 export {
   //* Values to use
@@ -54,9 +69,11 @@ export {
   fontSize as AppFontSize,
   iconSize as AppIconSize,
   gapSize as AppGapSize,
+  boxSize as AppBoxSize,
   //* Types shortcut
   type Colors as ColorsType,
   type FontSize as FontSizeType,
   type IconSize as IconSizeType,
   type GapSize as GapSizeType,
+  type BoxSize as BoxSizeType,
 };
