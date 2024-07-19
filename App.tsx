@@ -4,7 +4,7 @@ import {StatusBar, StyleSheet} from 'react-native';
 import MainNavigator from './src/navigators/MainNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {GlobalWrapper} from './src/components/wrappers/global';
+import {GlobalWrapper} from './src/components/wrappers/GlobalWrapper';
 
 function App(): React.JSX.Element {
   return (

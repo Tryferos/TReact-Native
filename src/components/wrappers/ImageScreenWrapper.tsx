@@ -1,5 +1,5 @@
 import {FC, PropsWithChildren} from 'react';
-import {Modal} from './modal';
+import {Modal} from './ModalWrapper';
 import {Image, ImageBackground, StyleSheet, View} from 'react-native';
 import {CustomText} from '../elements/CustomText';
 import {Row} from '../elements/Row';

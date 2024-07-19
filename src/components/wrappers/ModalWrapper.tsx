@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import ReactNativeModal from 'react-native-modal';
 import {Column} from '../elements/Column';
-import {Dimensions, Platform, View} from 'react-native';
+import {Dimensions, Platform, View, ViewProps, ViewStyle} from 'react-native';
 import {Row} from '../elements/Row';
 import {CustomText} from '../elements/CustomText';
 import {CustomIcon} from '../elements/CustomIcon';
@@ -11,6 +11,7 @@ type ModalProps = {
   isVisible: boolean;
   onClose: () => void;
   backdrop?: boolean;
+  style?: ViewStyle;
 } & ModalHeaderProps;
 
 export const Modal: FC<ModalProps> = ({
@@ -20,6 +21,7 @@ export const Modal: FC<ModalProps> = ({
   title,
   showCloseIcon = true,
   backdrop,
+  style,
 }) => {
   const deviceWidth = Dimensions.get('window').width;
   const deviceHeight =
@@ -39,8 +41,8 @@ export const Modal: FC<ModalProps> = ({
       onBackButtonPress={onClose}
       onBackdropPress={onClose}>
       <Column
-        style={{flex: 1}}
-        className="min-h-[120px] px-4 pb-6 pt-4 w-[100%]">
+        style={{flex: 1, ...style}}
+        className="min-h-[120px] px-2 pb-2 pt-4 w-[100%]">
         {showCloseIcon && <ModalHeader title={title} onClose={onClose} />}
         {children}
       </Column>
@@ -59,8 +61,8 @@ const ModalHeader: FC<ModalHeaderProps & Pick<ModalProps, 'onClose'>> = ({
 }) => {
   return (
     <Row className="items-center justify-between border-divider mb-5">
-      <View />
-      <CustomText font="wotfardMedium" size={'lg'}>
+      <View className="w-[24px]" />
+      <CustomText font="wotfardMedium" className="text-center" size={'lg'}>
         {title}
       </CustomText>
       <CustomIcon
