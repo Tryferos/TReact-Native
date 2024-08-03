@@ -3,7 +3,9 @@ const colors = Object.freeze({
   white: '#FFFFFF',
   gray: '#555555',
   main: '#2563eb',
+  mainLight: '#38bdf8',
   transparent: 'transparent',
+  lightOrage: '#ffedd5',
 });
 
 const fontSize = Object.freeze({
@@ -31,49 +33,46 @@ const iconSize = Object.freeze({
   '3xl': 96,
 });
 
-const gapSize = Object.freeze({
+const space = Object.freeze({
   zero: 0,
-  '3xs': 2,
-  '2xs': 4,
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 20,
-  xl: 24,
-  '2xl': 32,
-  '3xl': 48,
-});
-
-const boxSize = Object.freeze({
+  one: 1,
   '3xs': 4,
   '2xs': 8,
-  xs: 12,
-  sm: 16,
-  md: 20,
-  lg: 24,
-  xl: 32,
+  xs: 16,
+  sm: 20,
+  md: 24,
+  lg: 32,
+  xl: 40,
   '2xl': 48,
   '3xl': 64,
   '4xl': 96,
 });
 
+const borderRadius = Object.freeze({
+  sharp: 0,
+  small: 4,
+  normal: 8,
+  rounded: 16,
+  full: 9999,
+});
+
 type Colors = keyof typeof colors;
 type FontSize = keyof typeof fontSize;
 type IconSize = keyof typeof iconSize;
-type GapSize = keyof typeof gapSize;
-type BoxSize = keyof typeof boxSize;
+type BorderRadius = keyof typeof borderRadius;
+type Space = keyof typeof space;
 
 export {
   //* Values to use
   colors as AppColors,
   fontSize as AppFontSize,
   iconSize as AppIconSize,
-  gapSize as AppGapSize,
-  boxSize as AppBoxSize,
+  borderRadius as AppBorderRadius,
+  space as AppSpace,
   //* Types shortcut
   type Colors as ColorsType,
   type FontSize as FontSizeType,
   type IconSize as IconSizeType,
-  type GapSize as GapSizeType,
-  type BoxSize as BoxSizeType,
+  type Space as SpaceType,
+  type BorderRadius as BorderRadiusType,
 };
