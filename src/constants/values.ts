@@ -6,6 +6,9 @@ const colors = Object.freeze({
   mainLight: '#38bdf8',
   transparent: 'transparent',
   lightOrage: '#ffedd5',
+  error: '#f87171',
+  success: '#22c55e',
+  promise: '#94a3b8',
 });
 
 const fontSize = Object.freeze({
