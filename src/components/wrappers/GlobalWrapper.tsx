@@ -1,11 +1,11 @@
 import {FC, PropsWithChildren, useEffect} from 'react';
-import {View, Text} from 'react-native';
 import {useNetWorkInfo} from '../../store/netinfo';
 import {useUserSettings} from '../../store/settings';
+import {AppAlerts} from '../AppAlerts/AppAlerts';
 
 export const GlobalWrapper: FC<PropsWithChildren> = ({children}) => {
   const {isConnected, listen, unsubscribe} = useNetWorkInfo();
-  const {theme, language, init, setTheme, setLanguage} = useUserSettings();
+  const {init} = useUserSettings();
   useEffect(() => {
     listen();
     (async () => {
@@ -13,5 +13,12 @@ export const GlobalWrapper: FC<PropsWithChildren> = ({children}) => {
     })();
     return unsubscribe;
   }, []);
-  return <>{children}</>;
+  return (
+    //* {children} must be the first component of the wrapper
+    //* the later a component is added, the more z-index it has
+    <>
+      {children}
+      <AppAlerts />
+    </>
+  );
 };
