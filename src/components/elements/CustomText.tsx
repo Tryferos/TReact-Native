@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, useMemo} from 'react';
 import React, {
   StyleSheet,
   Text,
@@ -10,26 +10,36 @@ import {CustomTextProps} from '../../types/components';
 
 export const CustomText: FC<CustomTextProps> = ({
   children,
+  boxStyles,
   style: extraStyles,
-  className,
   font = 'wotfardRegular',
   color = 'black',
   size = 'md',
+  className,
   onPress,
 }) => {
-  return (
-    <TouchableOpacity onPress={onPress}>
+  const text = useMemo(() => {
+    return (
       <Text
+        className={className}
         style={[
           styles[font],
           {color: AppColors[color], fontSize: AppFontSize[size]},
           extraStyles,
-        ]}
-        className={className}>
+          boxStyles,
+        ]}>
         {children}
       </Text>
-    </TouchableOpacity>
-  );
+    );
+  }, [children, className, color, extraStyles, font, onPress, size]);
+  if (onPress) {
+    return (
+      <TouchableOpacity onPress={onPress} style={boxStyles}>
+        {text}
+      </TouchableOpacity>
+    );
+  }
+  return text;
 };
 
 export type FontStyles = keyof typeof styles;
