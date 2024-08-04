@@ -9,7 +9,7 @@ import {CustomText} from '../elements/CustomText';
 import {CustomIcon} from '../elements/CustomIcon';
 import {Row} from '../elements/Row';
 import {RoundButton} from '../organisms/RoundButton';
-import {AppBoxSize} from '../../constants/values';
+import {AppSpace} from '../../constants/values';
 
 type QuantityPickerModalProps = {
   height?: number;
@@ -22,7 +22,7 @@ type QuantityPickerModalProps = {
 
 export const QuantityPickerModalContent: FC<QuantityPickerModalProps> =
   memo<QuantityPickerModalProps>(
-    ({height = 200, onSelect, selectedValue, step = 5, label, onClose}) => {
+    ({height = 220, onSelect, selectedValue, step = 5, label, onClose}) => {
       const ref = useRef<ScrollView>(null);
       const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -48,13 +48,14 @@ export const QuantityPickerModalContent: FC<QuantityPickerModalProps> =
       const gap = 20;
       const fontSizeNormal = 18;
       useEffect(() => {
+        //Scroll at the render of the component in order to show the selected value
         if (!ref.current || values.length === 0) return;
         const offsetSpace = 24;
         const totalSize =
-          values.length * gap +
+          values.length * gap * 1.5 +
           (values.length - 1) * fontSizeNormal +
-          fontSizeSelected +
-          offsetSpace;
+          fontSizeSelected -
+          height / 2;
 
         const positionRelativeToSize =
           values.indexOf(selectedValue) / values.length;
@@ -68,6 +69,7 @@ export const QuantityPickerModalContent: FC<QuantityPickerModalProps> =
       }, [ref]);
 
       const onChange = (value: number) => {
+        //Scroll when the value is changed so it keeps the value visible
         const stepOffset = (value - selectedValue) / step;
         const heightStep = gap + fontSizeNormal;
         const offset = stepOffset * heightStep;
@@ -127,7 +129,7 @@ export const QuantityPickerModalContent: FC<QuantityPickerModalProps> =
           <RoundButton
             text={'Apply'}
             onPress={onClose}
-            style={{paddingVertical: AppBoxSize['2xs'], zIndex: 200}}
+            style={{paddingVertical: AppSpace['2xs'], zIndex: 200}}
           />
         </>
       );
