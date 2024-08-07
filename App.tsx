@@ -1,21 +1,22 @@
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
 import MainNavigator from './src/navigators/MainNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {GlobalWrapper} from './src/components/wrappers/GlobalWrapper';
+import {AppAlerts} from './src/components/AppAlerts/AppAlerts';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider style={[styles.container]}>
       <GestureHandlerRootView style={[styles.container]}>
         <CustomStatusBar />
-        <GlobalWrapper>
-          <NavigationContainer>
+        <NavigationContainer>
+          <GlobalWrapper>
             <MainNavigator />
-          </NavigationContainer>
-        </GlobalWrapper>
+          </GlobalWrapper>
+        </NavigationContainer>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );
