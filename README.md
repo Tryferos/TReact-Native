@@ -26,6 +26,43 @@ npm run init
 
 - [react-native-vector-icons setup](https://github.com/oblador/react-native-vector-icons/tree/master?tab=readme-ov-file)
 
+## Add the following lines to android folder.
+
+`android/buiid.gradle`
+
+```gradle
+depedencies {
+...
+classpath("com.google.gms:google-services:4.4.2")
+}
+```
+
+`android/app/build.gradle`
+
+```gradle
+...
+apply plugin: 'com.google.gms.google-services'
+...
+
+depedencies{
+    ...
+    implementation project(':react-native-vector-icons')
+
+    implementation 'com.google.android.gms:play-services-auth:21.0.0'
+}
+...
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+```
+
+`android/settings.gradle`
+
+```gradle
+...
+include ':react-native-vector-icons'
+project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
+```
+
 ## Useful Resources
 
 - [React Native Website](https://reactnative.dev) - learn more about React Native.
