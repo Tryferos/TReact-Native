@@ -1,10 +1,11 @@
 import {EXTERNAL_API_URL, INTERNAL_API_URL} from '../constants/network';
 import {useUserAuthentication} from '../store/authentication';
+import useLoader from '../store/loader';
 import {ErrorMiddlewareTypeProps} from '../types/network';
 
 type PostRequestProps<T> = {
   url: string;
-  body: {[key: string]: any};
+  body?: {[key: string]: any};
   formatData?: (data: any) => T;
 };
 
@@ -16,12 +17,13 @@ class Network {
     } as HeadersInit_;
   };
 
-  static async get<T>(
-    url: string,
-    formatData?: (data: any) => T,
-  ): Promise<T | null> {
+  static async get<T>({
+    url,
+    formatData,
+  }: Omit<PostRequestProps<T>, 'body'>): Promise<T | null> {
     const urlToCall = `${INTERNAL_API_URL}${url}`;
     try {
+      useLoader.getState().showLoader();
       const response = await fetch(urlToCall, {
         method: 'GET',
         headers: {
@@ -38,6 +40,8 @@ class Network {
       return data as T;
     } catch (err) {
       return null;
+    } finally {
+      useLoader.getState().hideLoader();
     }
   }
 
@@ -48,6 +52,7 @@ class Network {
   }: PostRequestProps<T>): Promise<T | null> {
     const urlToCall = `${INTERNAL_API_URL}${url}`;
     try {
+      useLoader.getState().showLoader();
       const response = await fetch(urlToCall, {
         method: 'POST',
         body: JSON.stringify(body),
@@ -65,6 +70,8 @@ class Network {
       return data as T;
     } catch (err) {
       return null;
+    } finally {
+      useLoader.getState().hideLoader();
     }
   }
 }
