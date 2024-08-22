@@ -8,6 +8,7 @@ import {useAppNavigation} from '../../types/navigation';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Column} from '../elements/Column';
 import {Brightness} from 'react-native-color-matrix-image-filters';
+import {RoundedBox} from '../elements/RoundedBox';
 
 type ImageScreenProps = {
   children: React.ReactNode;
@@ -61,7 +62,7 @@ const Header: FC<HeaderProps> = ({title}) => {
   return (
     <Row className="items-center justify-between border-divider mb-5">
       <TouchableOpacity onPress={handleBack}>
-        <Box>
+        <RoundedBox>
           <CustomIcon
             icon="arrow-back-ios-new"
             size="xs"
@@ -69,25 +70,19 @@ const Header: FC<HeaderProps> = ({title}) => {
             onPress={handleBack}
             style={{marginRight: 2}}
           />
-        </Box>
+        </RoundedBox>
       </TouchableOpacity>
       <CustomText font="wotfardMedium" size={'lg'} color="white">
         {title}
       </CustomText>
-      <Box>
+      <RoundedBox>
         <CustomIcon
           icon="settings"
           size="xs"
           color="white"
           onPress={() => {}}
         />
-      </Box>
+      </RoundedBox>
     </Row>
   );
 };
-
-const Box: FC<PropsWithChildren> = ({children}) => (
-  <Row className="flex relative p-2 bg-[#f2f2f25d] rounded-full">
-    {children}
-  </Row>
-);
