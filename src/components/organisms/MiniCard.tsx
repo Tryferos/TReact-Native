@@ -1,7 +1,7 @@
 import {FC} from 'react';
-import {Row} from '../../components/elements/Row';
-import {Column} from '../../components/elements/Column';
-import {CustomText} from '../../components/elements/CustomText';
+import {Row} from '../elements/Row';
+import {Column} from '../elements/Column';
+import {CustomText} from '../elements/CustomText';
 import {AppBorderRadius, AppColors} from '../../constants/values';
 import {ViewStyle} from 'react-native';
 import {CustomIcon} from '../elements/CustomIcon';
