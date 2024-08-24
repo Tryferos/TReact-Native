@@ -25,3 +25,15 @@ type UserSettingsType = {
   setTheme: (theme: UserSettingsProps['theme']) => Promise<void>;
   setLanguage: (language: UserSettingsProps['language']) => Promise<void>;
 } & UserSettingsProps;
+
+export const getLanguageName = () => {
+  const language = useUserSettings.getState().language;
+  switch (language) {
+    case 'en':
+      return 'English';
+    case 'el':
+      return 'Ελληνικά';
+    default:
+      return 'English';
+  }
+};
