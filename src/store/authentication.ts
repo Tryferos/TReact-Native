@@ -3,6 +3,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {create} from 'zustand';
 import auth from '@react-native-firebase/auth';
 import useLoader from './loader';
+import {wait} from '../libs/utils';
 
 type AuthenticationState = {
   init: () => () => void;
@@ -47,6 +48,7 @@ export const useUserAuthentication = create<AuthenticationState>(set => ({
     //! Using Google sign out signs out the user completely, so
     //! next time the user tries to sign in he will be prompted to sign in and choose an account
     useLoader.getState().showLoader();
+    await wait(1000);
     await GoogleSignin.signOut();
     useLoader.getState().hideLoader();
     set({user: null, idToken: null});
