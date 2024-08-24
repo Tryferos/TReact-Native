@@ -17,6 +17,7 @@ export const Column: FC<BoxProps> = ({
   children,
   shadow,
   onPress,
+  bgOpacity = 'FF',
   animation,
   style: extraStyles,
 }) => {
@@ -29,7 +30,7 @@ export const Column: FC<BoxProps> = ({
   const styles: ViewStyle[] = [
     {
       gap: AppSpace[gap],
-      backgroundColor: AppColors[backgroundColor],
+      backgroundColor: AppColors[backgroundColor] + bgOpacity,
       ...shadowStyles[shadow ?? 'undefined'],
     },
     ...basicStyles,

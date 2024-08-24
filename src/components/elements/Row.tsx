@@ -15,6 +15,7 @@ export const Row: FC<BoxProps> = ({
   backgroundColor = 'transparent',
   children,
   shadow,
+  bgOpacity = 'FF',
   onPress,
   animation,
   style: extraStyles,
@@ -28,7 +29,7 @@ export const Row: FC<BoxProps> = ({
   const styles: ViewStyle[] = [
     {
       gap: AppSpace[gap],
-      backgroundColor: AppColors[backgroundColor],
+      backgroundColor: AppColors[backgroundColor] + bgOpacity,
       ...shadowStyles[shadow ?? 'undefined'],
     },
     ...basicStyles,

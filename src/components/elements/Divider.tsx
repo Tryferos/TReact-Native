@@ -7,17 +7,18 @@ type DividerProps = {
 };
 
 export const Divider: FC<DividerProps> = ({
-  space = 16,
+  space = 8,
   paddingToCancelOuterSpacing = 16,
 }) => {
   return (
     <Row
+      backgroundColor="gray200"
       style={{
+        height: 2,
         marginTop: space / 2,
         marginBottom: space,
         marginHorizontal: -paddingToCancelOuterSpacing,
       }}
-      className="h-[1px] bg-gray-300 w-[100vw]"
     />
   );
 };
