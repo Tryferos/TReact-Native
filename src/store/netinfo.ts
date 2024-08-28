@@ -1,14 +1,18 @@
 import {
   NetInfoSubscription,
   addEventListener,
+  fetch,
 } from '@react-native-community/netinfo';
 import {create} from 'zustand';
+import useLoader from './loader';
+import {wait} from '../libs/utils';
 
 type NetInfoProps = {
   isConnected: boolean;
   subscription: NetInfoSubscription | null;
   listen: () => void;
   unsubscribe: () => void;
+  checkConnection: () => Promise<void>;
 };
 
 export const useNetWorkInfo = create<NetInfoProps>()(set => ({
@@ -26,5 +30,14 @@ export const useNetWorkInfo = create<NetInfoProps>()(set => ({
       state.subscription();
       return {subscription: null};
     });
+  },
+  checkConnection: async () => {
+    useLoader.getState().showLoader();
+    await wait(500);
+    const res = await fetch();
+    if (res.isConnected) {
+      set({isConnected: true});
+    }
+    useLoader.getState().hideLoader();
   },
 }));
