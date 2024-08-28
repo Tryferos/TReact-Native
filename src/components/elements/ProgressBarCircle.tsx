@@ -1,24 +1,30 @@
 import * as Progress from 'react-native-progress';
-import {AppColors} from '../../constants/values';
+import {AppColors, ColorsType} from '../../constants/values';
 import {FC} from 'react';
+import App from '../../../App';
 
 type ProgressBarProps = {
   progress: number;
   size?: number;
+  unfilledColor?: ColorsType;
+  thickness?: number;
 };
 
 export const ProgressBarCircle: FC<ProgressBarProps> = ({
   progress,
   size = 40,
+  unfilledColor,
+  thickness = 4,
 }) => {
   return (
     <Progress.Circle
       animated
       progress={Math.min(1, progress)}
       size={size}
-      borderColor={AppColors.transparent}
+      thickness={thickness}
+      borderColor={'transparent'}
       color={AppColors.main}
-      unfilledColor={AppColors['gray200']}
+      unfilledColor={unfilledColor ?? AppColors.main + '33'}
     />
   );
 };
