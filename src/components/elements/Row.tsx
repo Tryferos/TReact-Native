@@ -19,6 +19,7 @@ export const Row: FC<BoxProps> = ({
   onPress,
   animation,
   style: extraStyles,
+  clickAnimation = false,
 }) => {
   const basicStyles: ViewStyle[] = [
     {
@@ -41,7 +42,7 @@ export const Row: FC<BoxProps> = ({
       <Animated.View {...animation} style={[styles]}>
         <TouchableOpacity
           onPress={onPress}
-          activeOpacity={1}
+          activeOpacity={clickAnimation ? 0.8 : 1}
           style={[basicStyles]}>
           <>{children}</>
         </TouchableOpacity>
@@ -51,7 +52,10 @@ export const Row: FC<BoxProps> = ({
 
   if (onPress) {
     return (
-      <TouchableOpacity onPress={onPress} activeOpacity={1} style={styles}>
+      <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={clickAnimation ? 0.8 : 1}
+        style={styles}>
         <>{children}</>
       </TouchableOpacity>
     );

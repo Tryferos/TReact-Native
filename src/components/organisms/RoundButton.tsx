@@ -15,6 +15,7 @@ type RoundButtonProps = {
   textColor?: ColorsType;
   disabled?: boolean;
   icon?: AppIconsType;
+  clickAnimation?: boolean;
 };
 
 export const RoundButton: FC<RoundButtonProps> = ({
@@ -24,10 +25,12 @@ export const RoundButton: FC<RoundButtonProps> = ({
   textColor,
   icon,
   disabled = false,
+  clickAnimation = true,
 }) => {
   return (
     <Row
       onPress={disabled ? undefined : onPress}
+      clickAnimation={clickAnimation}
       style={{
         opacity: disabled ? 0.5 : 1,
         width: '100%',

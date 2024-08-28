@@ -18,9 +18,11 @@ export type BoxProps = Omit<ViewProps, 'style'> & {
   style?: StyleProp<ViewStyle>;
   gap?: SpaceType;
   backgroundColor?: ColorsType;
+  bgOpacity?: string; //IN HEX
   shadow?: keyof typeof shadowStyles;
   onPress?: () => void;
   animation?: AnimatedProps<{}>;
+  clickAnimation?: boolean;
 };
 
 type TextKeys = keyof Pick<TextStyle, 'color' | 'fontSize' | 'fontFamily'>;
