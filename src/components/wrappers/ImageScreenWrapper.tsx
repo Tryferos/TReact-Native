@@ -13,14 +13,15 @@ import {RoundedBox} from '../elements/RoundedBox';
 type ImageScreenProps = {
   children: React.ReactNode;
   src: string;
+  onBack?: () => void;
 } & HeaderProps;
 
 export const ImageScreen: FC<ImageScreenProps> = ({children, src, ...rest}) => {
   return (
-    <Column className="px-4 w-[100vw] h-[100vh] pt-12 relative">
+    <Column className="px-4 w-[100%] h-[100%] pt-12 relative">
       <ImageHeader src={src} />
       <Header {...rest} />
-      <Column className="min-h-[60vh] bg-white absolute bottom-0 left-0 m-0 w-[100vw] rounded-t-3xl px-6 pt-6 pb-6">
+      <Column className="basis-[60%] bg-white absolute bottom-0 left-0 m-0 w-[100vw] rounded-t-3xl px-6 pt-6 pb-6">
         {children}
       </Column>
     </Column>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
 const ImageHeader: FC<Pick<ImageScreenProps, 'src'>> = ({src}) => {
   return (
     <Brightness
-      className="absolute top-0 left-0 w-[100vw] h-[45vh]"
+      className="absolute top-0 left-0 w-[100vw] h-[50%]"
       amount={0.6}>
       <Image
         source={{uri: src}}
@@ -52,11 +53,16 @@ const ImageHeader: FC<Pick<ImageScreenProps, 'src'>> = ({src}) => {
 
 type HeaderProps = {
   title: string;
+  onBack?: () => void;
 };
 
-const Header: FC<HeaderProps> = ({title}) => {
+const Header: FC<HeaderProps> = ({title, onBack}) => {
   const navigation = useAppNavigation();
   const handleBack = () => {
+    if (typeof onBack == 'function') {
+      onBack();
+      return;
+    }
     navigation.goBack();
   };
   return (
