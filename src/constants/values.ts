@@ -4,6 +4,7 @@ const colors = Object.freeze({
   gray: '#555555',
   grayLight: '#f2f2f2',
   gray200: '#e5e7eb',
+  gray300: '#d1d5db',
   gray400: '#9ca3af',
   main: '#2563eb',
   mainLight: '#38bdf8',
@@ -11,6 +12,7 @@ const colors = Object.freeze({
   lightOrage: '#ffedd5',
   error: '#f87171',
   success: '#22c55e',
+  warning: '#f59e0b',
   promise: '#94a3b8',
 });
 
