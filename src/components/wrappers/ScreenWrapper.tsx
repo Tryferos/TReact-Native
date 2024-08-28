@@ -16,6 +16,8 @@ import {
 import {Spacer} from '../elements/Spacer';
 import {BottomFoods} from '../../screens/IndivudualProductScreen/components/BottomFoods';
 import {RoundedBox} from '../elements/RoundedBox';
+import {UserHeader} from '../organisms/UserHeader';
+import {AppIconsType} from '../../types/icons';
 
 type ScreenWrapperProps = {
   title: string;
@@ -26,6 +28,9 @@ type ScreenWrapperProps = {
   className?: string;
   showBottomFoods?: boolean;
   onBack?: () => void;
+  showUserHeader?: boolean;
+  trailingIcon?: AppIconsType;
+  canGoBack?: boolean;
 } & PropsWithChildren;
 
 export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
@@ -44,7 +49,12 @@ export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
       end={{x: 0, y: 1}}
       colors={[
         hasBgColor ? AppColors['mainLight'] : AppColors['white'],
-        hasBgColor ? `${AppColors['mainLight']}66` : AppColors['white'],
+        hasBgColor ? `${AppColors['mainLight']}77` : AppColors['white'],
+        hasBgColor ? `${AppColors['mainLight']}44` : AppColors['white'],
+        hasBgColor ? `${AppColors['mainLight']}33` : AppColors['white'],
+        hasBgColor ? `${AppColors['mainLight']}33` : AppColors['white'],
+        hasBgColor ? `${AppColors['mainLight']}22` : AppColors['white'],
+        AppColors['transparent'],
         AppColors['transparent'],
         AppColors['transparent'],
         AppColors['transparent'],
@@ -52,12 +62,14 @@ export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
       ]}
       style={{
         flex: 1,
-        paddingHorizontal: AppSpace.sm,
+        // paddingHorizontal: AppSpace.sm,
         paddingVertical: AppSpace['2xl'],
         paddingBottom: AppSpace.zero,
       }}>
       {showBottomFoods && <BottomFoods />}
-      <Header {...props} centerTitle={centerTitle} />
+      <Row style={{paddingHorizontal: AppSpace.sm}}>
+        <Header {...props} centerTitle={centerTitle} />
+      </Row>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{}}
@@ -68,7 +80,7 @@ export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
             ...extraStyles,
           }}
           gap={gap}
-          className={'py-4 ' + className}>
+          className={'px-4 py-4 ' + className}>
           {children}
         </Column>
       </ScrollView>
@@ -76,7 +88,14 @@ export const ScreenWrapper: FC<ScreenWrapperProps> = props => {
   );
 };
 
-const Header: FC<ScreenWrapperProps> = ({title, centerTitle, onBack}) => {
+const Header: FC<ScreenWrapperProps> = ({
+  title,
+  centerTitle,
+  onBack,
+  showUserHeader = false,
+  trailingIcon,
+  canGoBack = true,
+}) => {
   const navigator = useAppNavigation();
   const router = useAppRoute();
   const handleBack = () => {
@@ -86,7 +105,15 @@ const Header: FC<ScreenWrapperProps> = ({title, centerTitle, onBack}) => {
     }
     navigator.goBack();
   };
-  const showIcon = navigator.canGoBack() && router.name != 'Main_Home';
+  const showIcon =
+    navigator.canGoBack() &&
+    router.name != 'Main_Home' &&
+    router.name != 'SignIn_Screen' &&
+    canGoBack;
+
+  if (showUserHeader) {
+    return <UserHeader />;
+  }
 
   return (
     <Row
@@ -111,7 +138,11 @@ const Header: FC<ScreenWrapperProps> = ({title, centerTitle, onBack}) => {
         size={'2xl'}>
         {title}
       </CustomText>
-      <View />
+      {trailingIcon ? (
+        <CustomIcon icon={trailingIcon} size={'md'} color={'black'} />
+      ) : (
+        <View />
+      )}
     </Row>
   );
 };
