@@ -16,6 +16,7 @@ type CustomIconProps = {
   icon: AppIconsType;
   prefers?: 'material' | 'fontAwesome';
   color?: ColorsType;
+  colorOpacity?: string; //IN HEX
   size?: IconSizeType;
   onPress?: () => void;
   style?: Omit<TextStyle, 'width' | 'height'>;
@@ -25,6 +26,7 @@ export const CustomIcon: FC<CustomIconProps> = ({
   icon,
   size = 'md',
   color = 'black',
+  colorOpacity = 'FF',
   prefers = 'material',
   onPress,
   style,
@@ -32,7 +34,7 @@ export const CustomIcon: FC<CustomIconProps> = ({
   const iconProps = {
     name: icon,
     size: AppIconSize[size],
-    color: AppColors[color],
+    color: AppColors[color] + colorOpacity,
     onPress: onPress,
     style: style,
   };
